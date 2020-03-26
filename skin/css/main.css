@@ -19,22 +19,48 @@ header .header-title {
   justify-content: space-between;
   align-items: center;
 }
-header .header-title .user-form-displayer:last-child {
+header .header-title .actions a:last-child {
   margin-left: 2rem;
 }
 
-main #movie-wrapper {
+main #movies-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
 }
-main #movie-wrapper .single-movie img {
+main #movies-wrapper .single-movie img {
   height: 500px;
   width: 100%;
   object-fit: cover;
 }
 
-#user-forms-wrapper,
+.user-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(100, 100, 100, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-form form {
+  width: 500px;
+  background: white;
+  padding: 2rem;
+}
+.user-form form .form-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.user-form form .form-title h4 {
+  margin: 0;
+}
+
+#movie-details-wrapper,
 #movie-details-wrapper {
   position: fixed;
   height: 100%;

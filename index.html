@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kebab TV</title>
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
-    <link rel="stylesheet" href="skin/css/main.css">
+    <script src="https://kit.fontawesome.com/f1ae1bf88e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+    <link rel="stylesheet" href="./skin/css/main.css">
 </head>
 <body>
 
@@ -15,34 +16,64 @@
         <div class="header-title">
             <h1>Kebab.tv</h1>
             <div class="actions">
-                <a href="login" class="user-form-displayer" id="login-link">login</a>
-                <a href="register" class="user-form-displayer" id="register-link">register</a>
+                <a href="#login-form" id="login-link">login</a>
+                <a href="#register-form" id="register-link">register</a>
             </div>
         </div>
         <form action="search" method="get" id="search-form">
-            <input type="text" name="keywords" id="keywords" placeholder="What do you want to watch ?">
+            <input type="text" name="query" id="keywords" placeholder="What do you want to watch ?">
             <button type="submit">search</button>
         </form>
     </header>
 
     <main>
-        <div id="movie-wrapper"></div>
+        <div id="movies-wrapper"></div>
     </main>
 
     <footer>
         <p>Martin Déclert - 2020</p>
     </footer>
 
-    <div id="user-forms-wrapper">
-        <form action="register" method="post" id="register-form">
-            <input type="email" name="email" id="register-email" placeholder="your email">
-            <input type="text" name="pseudo" id="register-pseudo" placeholder="your username">
-            <input type="password" name="password" id="register-password" placeholder="your password">
+    <div id="register-form" class="user-form d-none">
+        <form action="register" method="post">
+            <div class="form-title">
+                <h4>Register</h4>
+                <a href="#" class="form-closer">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+            <div class="form-input">
+                <label for="register-email">Email</label>
+                <input type="email" name="email" id="register-email" placeholder="your email">
+            </div>
+            <div class="form-input">
+                <label for="register-pseudo">Pseudo</label>
+                <input type="text" name="pseudo" id="register-pseudo" placeholder="your username">
+            </div>
+            <div class="form-input">
+                <label for="register-password">Password</label>
+                <input type="password" name="password" id="register-password" placeholder="your password">
+            </div>
             <button type="submit">register</button>
         </form>
-        <form action="login" method="post" id="login-form">
-            <input type="email" name="email" id="login-email" placeholder="your email">
-            <input type="password" name="password" id="login-password" placeholder="your password">
+    </div>
+
+    <div id="login-form" class="user-form d-none">
+        <form action="login" method="post">
+            <div class="form-title">
+                <h4>Login</h4>
+                <a href="#" class="form-closer">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+            <div class="form-input">
+                <label for="login-email">Email</label>
+                <input type="email" name="email" id="login-email" placeholder="your email">
+            </div>
+            <div class="form-input">
+                <label for="login-password">Password</label>
+                <input type="password" name="password" id="login-password" placeholder="your password">
+            </div>
             <button type="submit">login</button>
         </form>
     </div>

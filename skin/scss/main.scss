@@ -21,14 +21,14 @@ header {
         justify-content: space-between;
         align-items: center;
 
-        .user-form-displayer:last-child {
+        .actions a:last-child {
             margin-left: 2rem;
         }
     }
 }
 
 main {
-    #movie-wrapper {
+    #movies-wrapper {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 2rem;
@@ -43,7 +43,36 @@ main {
     }
 }
 
-#user-forms-wrapper,
+.user-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(100, 100, 100, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        width: 500px;
+        background: white;
+        padding: 2rem;
+
+        .form-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            h4 {
+                margin: 0;
+            }
+        }
+    }
+}
+
+#movie-details-wrapper,
 #movie-details-wrapper {
     position: fixed;
     height: 100%;
