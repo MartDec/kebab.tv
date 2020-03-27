@@ -14,11 +14,14 @@ export class MovieList {
     display() {
         document.querySelector('#favorite-wrapper').innerHTML = '';
         this.wrapper.innerHTML = '';
-        for (let movie of this.currentResults) {
+        this.createList(this.currentResults);
+    };
+
+    createList(movies) {
+        for (let movie of movies) {
             let element = document.createElement('div');
             element.classList.add('single-movie');
-
-            let poster = movie.poster_path !== null
+            const poster = movie.poster_path !== null
                 ? this.posterUrl + movie.poster_path
                 : '../../public/img/movie-placeholder.png';
 
