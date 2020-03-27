@@ -1,14 +1,18 @@
 import { Toast } from "./Toast.js";
 import { Favorite } from "./Favorite.js";
+import { FetchRequest } from './FetchRequest.js';
 
 export class Favorites {
     constructor() {
         this.wrapper = document.querySelector('#favorite-wrapper');
         this.api = 'https://kebabtv.dwsapp.io/api';
         this.favorites = null;
-
-        this.getFavorites();
     };
+
+    async init() {
+        await this.getFavorites();
+        return this;
+    }
 
     async getFavorites() {
         let response = await new FetchRequest(
@@ -25,10 +29,11 @@ export class Favorites {
     };
 
     display() {
+        document.querySelector('#movies-wrapper').innerHTML = '';
         this.wrapper.innerHTML = '';
         for (let favoriteData of this.favorites) {
-            favorite = new Favorite(favoriteData, this);
-            this.wrapper.appendChild(this.favorite.element);
+            let favorite = new Favorite(favoriteData, this);
+            this.wrapper.appendChild(favorite.element);
         }
     };
 
@@ -45,13 +50,14 @@ export class Favorites {
         ).fetch();
 
         if (response.err === null || typeof response.err === 'undefined') {
-            new Toast('success', `${response.data.data.title} successfully added to favorites`).show();
+            this.getFavorites();
+            new Toast('success', `${movieTitle} successfully added to favorites`).show();
         } else {
             new Toast('error', response.err).show();
         }
     };
 
-    async remove(favoriteId) {
+    async remove(favoriteId, movieTitle) {
         let response = await new FetchRequest(
             `${this.api}/favorite/${favoriteId}`,
             'DELETE',
@@ -59,7 +65,8 @@ export class Favorites {
         ).fetch();
 
         if (response.err === null || typeof response.err === 'undefined') {
-            new Toast('success', `${response.data.data.title} successfully removed from favorites`).show();
+            await this.getFavorites();
+            new Toast('success', `${movieTitle} successfully removed from favorites`).show();
         } else {
             new Toast('error', response.err).show();
         }

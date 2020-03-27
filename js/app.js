@@ -2,7 +2,7 @@ import { UserForm } from "./classes/UserForm.js";
 import { Form } from "./classes/Form.js";
 import { MovieList } from "./classes/MovieList.js";
 import { Session } from "./classes/Session.js";
-import { Favorite } from "./classes/Favorite.js";
+import { Favorites } from './classes/Favorites.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -36,9 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         new MovieList(response, session).display();
     });
 
-    favorite.addEventListener('click', e => {
+    favorite.addEventListener('click', async e => {
         e.preventDefault();
-        new Favorite(session).display();
+        let favorites = await new Favorites().init();
+        favorites.display();
     })
 
     logout.addEventListener('click', e => {
