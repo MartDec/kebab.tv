@@ -50,7 +50,7 @@ export class Favorites {
         ).fetch();
 
         if (response.err === null || typeof response.err === 'undefined') {
-            this.getFavorites();
+            await this.getFavorites();
             new Toast('success', `${movieTitle} successfully added to favorites`).show();
         } else {
             new Toast('error', response.err).show();
