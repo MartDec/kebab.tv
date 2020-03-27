@@ -1,5 +1,3 @@
-import { FetchRequest } from "./FetchRequest.js";
-
 export class Session {
     constructor() {
         this.logged = !(localStorage.getItem('user_id') === null);
@@ -39,16 +37,6 @@ export class Session {
         this.sessionActions.querySelectorAll('.logged').forEach(item => {
             item.classList.add('d-none');
         });
+        document.querySelector('#favorite-wrapper').innerHTML = '';
     };
-
-    async displayFavorite() {
-        if (this.logged) {
-            let response = await new FetchRequest(
-                'https://kebabtv.dwsapp.io/api/me',
-                'POST',
-                `{"token": "${localStorage.getItem('user_token')}"}`
-            ).fetch();
-            console.log(response);
-        }
-    }
 }

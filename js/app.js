@@ -2,6 +2,7 @@ import { UserForm } from "./classes/UserForm.js";
 import { Form } from "./classes/Form.js";
 import { MovieList } from "./classes/MovieList.js";
 import { Session } from "./classes/Session.js";
+import { Favorite } from "./classes/Favorite.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     favorite.addEventListener('click', e => {
         e.preventDefault();
-        session.displayFavorite();
+        new Favorite(session).display();
     })
 
     logout.addEventListener('click', e => {

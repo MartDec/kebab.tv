@@ -73,7 +73,21 @@ footer p {
   margin: 0;
 }
 
-#movie-details-wrapper,
+#favorite-wrapper .single-favorite {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #383d41;
+  background-color: #e2e3e5;
+  border-color: #d6d8db;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+#favorite-wrapper .single-favorite h3 {
+  margin: 0;
+}
+
 #movie-details-wrapper {
   position: fixed;
   height: 100%;
@@ -91,6 +105,7 @@ footer p {
   max-width: 800px;
   padding: 2rem;
   display: flex;
+  border-radius: 5px;
 }
 #movie-details img {
   width: 40%;
@@ -106,6 +121,7 @@ footer p {
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 5px;
 }
 .toast.toast-error {
   color: #721c24;
