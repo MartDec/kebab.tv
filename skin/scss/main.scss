@@ -39,12 +39,12 @@ main {
 
     #movies-wrapper {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-gap: 2rem;
 
         .single-movie {
             img {
-                height: 500px;
+                height: 400px;
                 width: 100%;
                 object-fit: cover;
             }
@@ -136,7 +136,7 @@ footer {
 
 .toast {
     padding: .3rem 3rem;
-    position: absolute;
+    position: fixed;
     top: 2rem;
     left: 50%;
     transform: translateX(-50%);

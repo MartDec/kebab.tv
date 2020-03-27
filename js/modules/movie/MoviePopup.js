@@ -1,5 +1,4 @@
 import { Favorites } from "../favorite/Favorites.js";
-import { Toast } from "../Toast.js";
 
 export class MoviePopup {
     constructor(movie, details) {

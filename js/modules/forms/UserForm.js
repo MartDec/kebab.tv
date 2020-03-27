@@ -1,6 +1,6 @@
 import { Form } from "./Form.js";
-import { FetchRequest } from "./FetchRequest.js";
-import { Toast } from './Toast.js';
+import { FetchRequest } from "../FetchRequest.js";
+import { Toast } from '../Toast.js';
 
 export class UserForm extends Form {
     constructor(formId, action) {

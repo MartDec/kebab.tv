@@ -1,5 +1,5 @@
-import { FetchRequest } from "./FetchRequest.js";
-import { Toast } from "./Toast.js";
+import { FetchRequest } from "../FetchRequest.js";
+import { Toast } from "../Toast.js";
 
 export class Form {
     constructor(formId, action) {

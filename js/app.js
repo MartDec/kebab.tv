@@ -1,5 +1,5 @@
-import { UserForm } from "./modules/UserForm.js";
-import { Form } from "./modules/Form.js";
+import { UserForm } from "./modules/forms/UserForm.js";
+import { Form } from "./modules/forms/Form.js";
 import { MovieList } from "./modules/movie/MovieList.js";
 import { Session } from "./modules/Session.js";
 import { Favorites } from './modules/favorite/Favorites.js';
