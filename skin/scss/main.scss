@@ -6,12 +6,14 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    position: relative;
 
     header,
     main {
         max-width: 1000px;
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -20,6 +22,11 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 2rem 0;
+
+        h1 {
+            margin: 0;
+        }
 
         .actions a:not(:first-child) {
             margin-left: 2rem;
@@ -28,6 +35,8 @@ header {
 }
 
 main {
+    margin-bottom: 4rem;
+
     #movies-wrapper {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -40,6 +49,12 @@ main {
                 object-fit: cover;
             }
         }
+    }
+}
+
+footer {
+    p {
+        text-align: center;
     }
 }
 

@@ -2,7 +2,7 @@ import { FetchRequest } from "./FetchRequest.js";
 import { MoviePopup } from "./MoviePopup.js";
 
 export class MovieList {
-    constructor(moviesData) {
+    constructor(moviesData, session) {
         this.currentPage = moviesData.page;
         this.totalPages = moviesData.total_pages;
         this.totalResults = moviesData.total_results;
@@ -10,9 +10,11 @@ export class MovieList {
         this.wrapper = document.querySelector('#movies-wrapper');
         this.findMovieUrl = 'https://api.themoviedb.org/3/movie/';
         this.posterUrl = 'https://image.tmdb.org/t/p/w500';
+        this.session = session;
     };
 
     display() {
+        this.wrapper.innerHTML = '';
         for (let movie of this.currentResults) {
             let element = document.createElement('div');
             element.classList.add('single-movie');
@@ -41,7 +43,7 @@ export class MovieList {
                 const movieId = e.target.getAttribute('data-movie-id');
                 const url = `${this.findMovieUrl + movieId}?api_key=6fd32a8aef5f85cabc50cbec6a47f92f`;
                 const movie = await new FetchRequest(url).fetch();
-                new MoviePopup(movie).display();
+                new MoviePopup(movie, this.session).display();
             });
         }
     };
