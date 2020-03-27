@@ -19,7 +19,7 @@ header .header-title {
   justify-content: space-between;
   align-items: center;
 }
-header .header-title .actions a:last-child {
+header .header-title .actions a:not(:first-child) {
   margin-left: 2rem;
 }
 

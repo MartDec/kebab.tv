@@ -21,7 +21,7 @@ header {
         justify-content: space-between;
         align-items: center;
 
-        .actions a:last-child {
+        .actions a:not(:first-child) {
             margin-left: 2rem;
         }
     }

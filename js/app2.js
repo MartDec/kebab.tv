@@ -1,7 +1,7 @@
-import { Toast } from "./classes/Toast.js";
 import { UserForm } from "./classes/UserForm.js";
 import { Form } from "./classes/Form.js";
 import { MovieList } from "./classes/MovieList.js";
+import { Session } from "./classes/Session.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -12,23 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const register = new UserForm('#register-form form', USER_API + 'register');
     const search = new Form('#search-form', MOVIE_API);
 
+    const logout = document.querySelector('#logout-link');
+
+    const session = new Session;
+
     login.element.addEventListener('submit', async e => {
         e.preventDefault();
-
-        let response = await login.submit();
-        if (typeof response !== 'undefined') {
-            localStorage.setItem('user_id', response.data.user._id);
-            localStorage.setItem('user_token', response.data.token);
-        }
+        let userData = await login.submit();
+        session.createSession(userData.data);
     });
 
     register.element.addEventListener('submit', async e => {
         e.preventDefault();
-
-        let response = await register.submit();
-        if (typeof response !== 'undefined') {
-            new Toast('success', 'Your account have been created<br>login to access all functionalities').show();
-        }
+        let userData = await register.submit();
+        session.createSession(userData.data);
     });
 
     search.element.addEventListener('submit', async e => {
@@ -36,5 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let response = await search.submit();
         const movieList = new MovieList(response).display();
     });
+
+    logout.addEventListener('click', e => {
+        e.preventDefault();
+        session.destroySession();
+    })
 
 });

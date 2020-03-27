@@ -11,7 +11,7 @@ export class Form {
     async submit() {
         let response = null;
 
-        if (this.method === 'POST') {
+        if (this.method === 'POST' || this.method === 'DELETE') {
             const data = this._getPostData();
             response = await new FetchRequest(this.action, this.method, JSON.stringify(data)).fetch();
         } else {
