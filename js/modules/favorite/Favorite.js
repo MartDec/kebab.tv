@@ -1,5 +1,5 @@
-import { MovieList } from "./MovieList.js";
-import { MoviePopup } from "./MoviePopup.js";
+import { MovieList } from "../movie/MovieList.js";
+import { MoviePopup } from "../movie/MoviePopup.js";
 
 export class Favorite {
     constructor(data, favorites) {

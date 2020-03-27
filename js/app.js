@@ -1,8 +1,8 @@
-import { UserForm } from "./classes/UserForm.js";
-import { Form } from "./classes/Form.js";
-import { MovieList } from "./classes/MovieList.js";
-import { Session } from "./classes/Session.js";
-import { Favorites } from './classes/Favorites.js';
+import { UserForm } from "./modules/UserForm.js";
+import { Form } from "./modules/Form.js";
+import { MovieList } from "./modules/movie/MovieList.js";
+import { Session } from "./modules/Session.js";
+import { Favorites } from './modules/favorite/Favorites.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 

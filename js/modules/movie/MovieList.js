@@ -1,6 +1,6 @@
-import { FetchRequest } from "./FetchRequest.js";
+import { FetchRequest } from "../FetchRequest.js";
 import { Movie } from "./Movie.js";
-import { Toast } from "./Toast.js";
+import { Toast } from "../Toast.js";
 
 export class MovieList {
     constructor() {

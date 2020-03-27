@@ -1,6 +1,6 @@
-import { Toast } from "./Toast.js";
+import { Toast } from "../Toast.js";
 import { Favorite } from "./Favorite.js";
-import { FetchRequest } from './FetchRequest.js';
+import { FetchRequest } from '../FetchRequest.js';
 
 export class Favorites {
     constructor() {
