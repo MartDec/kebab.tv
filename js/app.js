@@ -1,5 +1,4 @@
 import { UserForm } from "./modules/forms/UserForm.js";
-import { Form } from "./modules/forms/Form.js";
 import { MovieList } from "./modules/movie/MovieList.js";
 import { Session } from "./modules/Session.js";
 import { Favorites } from './modules/favorite/Favorites.js';
@@ -7,12 +6,11 @@ import { Favorites } from './modules/favorite/Favorites.js';
 document.addEventListener('DOMContentLoaded', () => {
 
     const USER_API = 'https://kebabtv.dwsapp.io/api/';
-    const MOVIE_API = 'https://api.themoviedb.org/3/search/movie?api_key=6fd32a8aef5f85cabc50cbec6a47f92f';
 
     const login = new UserForm('#login-form form', USER_API + 'login');
     const register = new UserForm('#register-form form', USER_API + 'register');
-    const search = new Form('#search-form', MOVIE_API);
 
+    const search = document.querySelector('#search-form');
     const favorite = document.querySelector('#favorite-link');
     const logout = document.querySelector('#logout-link');
 
@@ -30,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         session.create(userData.data);
     });
 
-    search.element.addEventListener('submit', async e => {
+    search.addEventListener('submit', async e => {
         e.preventDefault();
         const keyword = e.target.querySelector('input').value;
         const list = await new MovieList().search(keyword);
