@@ -19,6 +19,7 @@ export class UserForm extends Form {
             response = await this._getUserToken(userData);
 
         if (typeof response !== 'undefined') {
+            this.element.reset();
             new Toast('success', `Welcome ${response.data.user.pseudo} !`).show();
             this.element.parentElement.classList.add('d-none');
         }
