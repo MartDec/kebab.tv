@@ -1,50 +1,39 @@
-import { MoviePopup } from "./MoviePopup.js";
+import { FetchRequest } from "./FetchRequest.js";
+import { Movie } from "./Movie.js";
 
 export class MovieList {
-    constructor(moviesData, session) {
-        this.currentPage = moviesData.page;
-        this.totalPages = moviesData.total_pages;
-        this.totalResults = moviesData.total_results;
-        this.currentResults = moviesData.results;
+    constructor() {
         this.wrapper = document.querySelector('#movies-wrapper');
-        this.posterUrl = 'https://image.tmdb.org/t/p/w500';
-        this.session = session;
+        this.api = 'https://api.themoviedb.org/3/search/movie';
+        this.apiKey = '6fd32a8aef5f85cabc50cbec6a47f92f';
+        this.movies = null;
+        this.currentPage = null;
+        this.totalPage = null;
+        this.totalResults = null;
+    };
+
+    async search(keyword) {
+        const url = `${this.api}?query=${keyword}&api_key=${this.apiKey}`;
+        const response = await new FetchRequest(url).fetch();
+
+        if (response.err === null || typeof response.err === 'undefined') {
+            this.movies = response.results;
+            this.currentPage = response.page;
+            this.totalPage = response.total_pages;
+            this.totalResults = response.total_results;
+        } else {
+            new Toast('error', response.err).show();
+        }
+
+        return this;
     };
 
     display() {
         document.querySelector('#favorite-wrapper').innerHTML = '';
         this.wrapper.innerHTML = '';
-        this.createList(this.currentResults);
-    };
-
-    createList(movies) {
-        for (let movie of movies) {
-            let element = document.createElement('div');
-            element.classList.add('single-movie');
-            const poster = movie.poster_path !== null
-                ? this.posterUrl + movie.poster_path
-                : '../../public/img/movie-placeholder.png';
-
-            element.innerHTML = `
-            <img src="${poster}"/>
-            <div class="movie-infos">
-                <h3>${movie.title}</h3>
-                <div class="actions">
-                    <button class="watch-details" data-movie-id="${movie.id}">watch details</button>
-                </div>
-            </div>`;
-            this.wrapper.appendChild(element);
-        }
-        this._getDetails();
-    };
-
-    _getDetails() {
-        let buttons = document.querySelectorAll('.watch-details');
-        for (let button of buttons) {
-            button.addEventListener('click', async e => {
-                const movieId = e.target.getAttribute('data-movie-id');
-                new MoviePopup(movieId, this.session, 'list').display();
-            });
+        for (let movieData of this.movies) {
+            let movie = new Movie(movieData, this);
+            this.wrapper.appendChild(movie.element);
         }
     };
 }

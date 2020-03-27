@@ -32,8 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     search.element.addEventListener('submit', async e => {
         e.preventDefault();
-        let response = await search.submit();
-        new MovieList(response, session).display();
+        const keyword = e.target.querySelector('input').value;
+        const list = await new MovieList().search(keyword);
+        list.display();
     });
 
     favorite.addEventListener('click', async e => {
