@@ -38,15 +38,38 @@ main {
     margin-bottom: 4rem;
 
     #movies-wrapper {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 2rem;
+        #movies-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 2rem;
 
-        .single-movie {
-            img {
-                height: 400px;
-                width: 100%;
-                object-fit: cover;
+            .single-movie {
+                img {
+                    height: 400px;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        #pagination {
+            text-align: center;
+            margin-top: 2rem;
+
+            a:not(:last-child) {
+                margin-right: 1.5rem;
+            }
+
+            a.active {
+                color: white;
+                background: #9b4dca;
+                padding: .5rem;
+            }
+
+            a.disabled {
+                opacity: .5;
+                cursor: default;
+                pointer-events: none;
             }
         }
     }

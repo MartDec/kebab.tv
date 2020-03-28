@@ -32,15 +32,32 @@ header .header-title .actions a:not(:first-child) {
 main {
   margin-bottom: 4rem;
 }
-main #movies-wrapper {
+main #movies-wrapper #movies-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
 }
-main #movies-wrapper .single-movie img {
+main #movies-wrapper #movies-container .single-movie img {
   height: 400px;
   width: 100%;
   object-fit: cover;
+}
+main #movies-wrapper #pagination {
+  text-align: center;
+  margin-top: 2rem;
+}
+main #movies-wrapper #pagination a:not(:last-child) {
+  margin-right: 1.5rem;
+}
+main #movies-wrapper #pagination a.active {
+  color: white;
+  background: #9b4dca;
+  padding: 0.5rem;
+}
+main #movies-wrapper #pagination a.disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
 }
 
 footer p {

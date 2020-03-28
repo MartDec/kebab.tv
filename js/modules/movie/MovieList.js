@@ -1,6 +1,7 @@
 import { FetchRequest } from "../FetchRequest.js";
 import { Movie } from "./Movie.js";
 import { Toast } from "../Toast.js";
+import { Pagination } from "../Pagination.js";
 
 export class MovieList {
     constructor() {
@@ -10,7 +11,7 @@ export class MovieList {
         this.apiKey = '6fd32a8aef5f85cabc50cbec6a47f92f';
         this.movies = null;
         this.currentPage = null;
-        this.totalPage = null;
+        this.totalPages = null;
         this.totalResults = null;
     };
 
@@ -21,7 +22,7 @@ export class MovieList {
         if (response.err === null || typeof response.err === 'undefined') {
             this.movies = response.results;
             this.currentPage = response.page;
-            this.totalPage = response.total_pages;
+            this.totalPages = response.total_pages;
             this.totalResults = response.total_results;
         } else {
             new Toast('error', response.err).show();
@@ -39,14 +40,24 @@ export class MovieList {
         } else {
             new Toast('error', response.err).show();
         }
-    }
+    };
 
     display() {
         document.querySelector('#favorite-wrapper').innerHTML = '';
         this.wrapper.innerHTML = '';
+        const moviesContainer = document.createElement('div');
+        moviesContainer.setAttribute('id', 'movies-container');
         for (let movieData of this.movies) {
             let movie = new Movie(movieData, this);
-            this.wrapper.appendChild(movie.element);
+            moviesContainer.appendChild(movie.element);
         }
+        const pagination = new Pagination({
+            content: this.movies,
+            currentPage: this.currentPage,
+            totalPages: this.totalPages,
+            totalResults: this.totalResults
+        });
+        this.wrapper.appendChild(moviesContainer);
+        this.wrapper.appendChild(pagination.element);
     };
 }
