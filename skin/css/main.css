@@ -38,9 +38,16 @@ main #movies-wrapper #movies-container {
   grid-gap: 2rem;
 }
 main #movies-wrapper #movies-container .single-movie img {
-  height: 400px;
+  height: 352.5px;
   width: 100%;
   object-fit: cover;
+}
+main #movies-wrapper #movies-container .single-movie img:hover {
+  width: 120%;
+}
+main #movies-wrapper #movies-container .single-movie img,
+main #movies-wrapper #movies-container .single-movie h3 {
+  cursor: pointer;
 }
 main #movies-wrapper #pagination {
   text-align: center;

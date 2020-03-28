@@ -28,7 +28,7 @@ export class Movie {
         <div class="movie-infos">
             <h3 class="show-details">${this.title}</h3>
             <div class="actions">
-                <button class="show-details">watch details</button>
+                <button class="show-details">show details</button>
             </div>
         </div>`;
         this.setShowDetailsListener();
