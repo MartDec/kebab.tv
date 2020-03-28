@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const session = new Session;
 
+    const getLastSearch = async () => {
+        if (localStorage.getItem('last_search') !== null) {
+            const keyword = localStorage.getItem('last_search');
+            const search = await new MovieList().search(keyword);
+            search.display();
+        }
+    }
+
     login.element.addEventListener('submit', async e => {
         e.preventDefault();
         let userData = await login.submit();
@@ -39,11 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         let favorites = await new Favorites().init();
         favorites.display();
-    })
+    });
 
     logout.addEventListener('click', e => {
         e.preventDefault();
         session.destroy();
-    })
+    });
+
+    getLastSearch();
 
 });
