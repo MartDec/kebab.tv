@@ -37,6 +37,7 @@ export class MovieList {
 
     async search(keyword) {
         this.keyword = keyword;
+        localStorage.setItem('last_search', this.keyword);
         const url = `${this.searchUrl}?query=${keyword}&api_key=${this.apiKey}`;
         const response = await new FetchRequest(url).fetch();
 
