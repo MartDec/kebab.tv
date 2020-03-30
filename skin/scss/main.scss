@@ -14,6 +14,10 @@ body {
         max-width: 1000px;
         margin-left: auto;
         margin-right: auto;
+
+        @media screen and (max-width: 1024px) {
+            padding: 0 1rem;
+        }
     }
 }
 
@@ -44,10 +48,22 @@ main {
 
         .single-movie {
             img {
-                height: 400px;
+                max-height: 400px;
                 width: 100%;
                 object-fit: cover;
             }
+        }
+
+        @media screen and (max-width: 800px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media screen and (max-width: 580px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width: 400px) {
+            grid-template-columns: repeat(1, 1fr);
         }
     }
 }

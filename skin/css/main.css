@@ -15,6 +15,12 @@ body main {
   margin-left: auto;
   margin-right: auto;
 }
+@media screen and (max-width: 1024px) {
+  body header,
+body main {
+    padding: 0 1rem;
+  }
+}
 
 header .header-title {
   display: flex;
@@ -38,9 +44,24 @@ main #movies-wrapper {
   grid-gap: 2rem;
 }
 main #movies-wrapper .single-movie img {
-  height: 400px;
+  max-height: 400px;
   width: 100%;
   object-fit: cover;
+}
+@media screen and (max-width: 800px) {
+  main #movies-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 580px) {
+  main #movies-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 400px) {
+  main #movies-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 footer p {
