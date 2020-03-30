@@ -1,4 +1,4 @@
-var cacheName = 'kebab.tv';
+var cacheName = 'kebabtv';
 var filesToCache = [
   '/',
   '/index.html',
